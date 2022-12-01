@@ -4,17 +4,464 @@
 <% end %>
 
 
-<br><br><br>
-<div id="cats">
- <a href="http://localhost:3000/cats/1"><%= image_tag "cat1.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/2"><%= image_tag "cat2.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/3"><%= image_tag "cat3.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/4"><%= image_tag "cat4.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/5"><%= image_tag "cat5.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/6"><%= image_tag "cat6.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/7"><%= image_tag "cat7.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/8"><%= image_tag "cat8.jpg", width: 480, height: 300 %></a>
- <a href="http://localhost:3000/cats/9"><%= image_tag "cat9.jpg", width: 480, height: 300 %></a>
- </div>
-<br><br><br><br>
+<!doctype html>
 
+<html lang="fr">
+
+<head>
+
+     <meta charset="utf-8">
+
+     <title>Navbar</title>
+
+    <%= stylesheet_link_tag "test.css" %>
+    
+     <!-- CSS only -->
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<style>
+.navbar{
+
+position: sticky; /* permet de garder la nav collée en haut de l'ecran */
+
+top: 0;
+
+padding: 10px;
+
+display: flex; /* pour aligner les elements*/
+
+align-items: center;
+
+justify-content: space-between;
+
+width: 100%;
+
+box-sizing: border-box;
+
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!---------------------------- navbar-------------------------------------------------------------------------->
+
+          <header>
+
+     <nav class="navbar">
+
+         <a href="#" class="logo">e-Kittens</a>
+
+          <div class="nav-links">
+
+                    <ul>
+
+              
+
+                   <li><%= link_to "Home", root_path %></li>
+
+                        <li><%= link_to "Panier", homes_show_path %></li>
+
+  
+
+                    <% if user_signed_in? %>
+
+                    <li>
+
+                                   <i><%= link_to "Se déconnecter", destroy_user_session_path, style: "color:brown", method: :get %></i>
+
+                    </li>
+  
+
+                    <li>
+
+                         <%= link_to "Edit email / password", edit_user_registration_path %>
+
+                    </li>
+
+  
+
+               <% else %>
+
+                    <li>
+
+                        <%= link_to "Login", new_user_session_path %>
+
+                    </li>
+
+  
+
+                    <li>
+
+                         <%= link_to "Sign up", new_user_registration_path %> 
+
+                    </li>
+
+  
+
+               <% end %>
+
+               </ul>     
+
+               </div>
+
+               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/120px-Hamburger_icon.svg.png" alt="menu" class="menu-hamburger">
+
+               </nav> <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+              
+ <header>  
+      
+    <p><center><h1> Vous recherchez des photos de chatons?<pre> Ca tombe bien, nous en vendons</pre></h1><center></p>
+
+ </header>
+
+  <main>              
+   
+ 
+   
+  <div class="container">
+    
+    <div class="row row-cols-4 row-cols-md-3 col-sm-0 p-md-0 m-md-0 d-flex justify-content-center">
+    <div class="col-sm-12 col-12 col-md-4 ">
+        <a href="prod.html" class="card-clic"></a>
+        <div class="card border-secondary mb-4 card-index">
+         <div id="cats">  
+         <a href="http://localhost:3000/cats/1"><%= image_tag "cat1.jpg", width: 480, height: 300 %> class="card-clic"></a>
+          </div>  
+          <div class="card-header p-0">
+              <img crop="fill" class="card-img-top" src="data:image/jpeg;base64,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" width="400" height="400">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Lou</h4>
+              <p class="card-text">chat</p>
+              <p class="card-text">10 €</p>
+            </div>
+          </a>
+            <div class="card-footer">
+              <a href="prod.html" class="card-clic"></a>
+              <a class="btn btn-outline-dark mx-1 my-1" href="prod.html">Voir plus</a>
+                <a class="cart" data-method="PUT" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" >
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                  </svg>
+                </a>          
+            </div>
+        </div>
+      </div>
+    
+ 
+    
+    
+    <div class="col-sm-12 col-12 col-md-4 ">
+      <a href="#" class="card-clic"></a>
+      <div class="card border-secondary mb-4 card-index">
+       <div id="cats">
+       <a href="http://localhost:3000/cats/2"><%= image_tag "cat2.jpg", width: 480, height: 300 %> class="card-clic"></a> 
+        </div> 
+        <div class="card-header p-0">
+            <img crop="fill" class="card-img-top" src="https://lemagduchat.ouest-france.fr/images/dossiers/2020-08/mini/education-chaton-071501-650-400.jpg" width="400" height="400">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Pistache</h4>
+            <p class="card-text">Race</p>
+            <p class="card-text">12.99 €</p>
+          </div>
+        </a>
+          <div class="card-footer">
+            <a href="#" class="card-clic"></a>
+            <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+              <a class="cart" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                </svg>
+              </a> 
+          </div>
+        </div>
+      </div>
+    
+    <div class="col-sm-12 col-12 col-md-4">
+      <a href="#" class="card-clic"></a>
+      <div class="card border-secondary mb-4 card-index">
+       <div id="cats">  
+       <a href="http://localhost:3000/cats/3"><%= image_tag "cat3.jpg", width: 480, height: 300 %>class="card-clic"></a>
+        </div>  
+        <div class="card-header p-0">
+            <img crop="fill" class="card-img-top" src="https://www.zooplus.fr/magazine/wp-content/uploads/2019/06/arriv%C3%A9e-dun-chaton-%C3%A0-la-maison.jpeg" width="400" height="400">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Kitty</h4>
+            <p class="card-text">Race</p>
+            <p class="card-text">15.99 €</p>
+          </div>
+        </a>
+        <div class="card-footer">
+          <a href="#" class="card-clic"></a>
+          <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+              <a class="cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                </svg>
+              </a>          
+        </div>
+      </div>
+    </div>
+
+      <div class="col-sm-12 col-12 col-md-4 ">
+        <a href="#" class="card-clic"></a>
+        <div class="card border-secondary mb-4 card-index">
+        <div id="cats">
+         <a href="http://localhost:3000/cats/4"><%= image_tag "cat4.jpg", width: 480, height: 300 %>class="card-clic"></a>
+         </div>   
+         <div class="card-header p-0">
+              <img crop="fill" class="card-img-top" src="https://jardinage.lemonde.fr/images/dossiers/2017-08/chaton-161238.jpg" width="400" height="400">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Marinette</h4>
+              <p class="card-text">Race</p>
+              <p class="card-text">11.99 €</p>
+            </div>
+            </a>
+            <div class="card-footer">
+              <a href="#" class="card-clic"></a>
+              <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+                <a class="cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                  </svg>
+                </a>     
+            </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-12 col-md-4 ">
+        <a href="#" class="card-clic"></a>
+        <div class="card border-secondary mb-4 card-index">
+         <div id="cats">         
+         <a href="http://localhost:3000/cats/5"><%= image_tag "cat5.jpg", width: 480, height: 300 %>class="card-clic"></a>
+         </div> 
+          <div class="card-header p-0">
+              <img crop="fill" class="card-img-top" src="https://www.catsbest.de/wp-content/uploads//katzenbaby-von-der-mutter-trennen-4-1024x684.jpg" width="400" height="400">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Harry</h4>
+              <p class="card-text">Race</p>
+              <p class="card-text">9.99 €</p>
+            </div>
+          </a>
+            <div class="card-footer">
+              <a href="#" class="card-clic"></a>
+              <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+                  <a class="cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                    </svg>
+                  </a>         
+            </div>
+        </div>
+      </div>
+
+
+          <div class="col-sm-12 col-12 col-md-4 ">
+            <a href="#" class="card-clic"></a>
+            <div class="card border-secondary mb-4 card-index">
+             <div id="cats">         
+             <a href="http://localhost:3000/cats/6"><%= image_tag "cat6.jpg", width: 480, height: 300 %>class="card-clic"></a>
+              </div>  
+              <div class="card-header p-0">
+                  <img crop="fill" class="card-img-top" src="https://jardinage.lemonde.fr/images/dossiers/2022-06/mini/diarrhee-chaton-115642-650-325.jpg" width="400" height="400">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Name</h4>
+                  <p class="card-text">Race</p>
+                  <p class="card-text">9.99 €</p>
+                </div>
+              </a>
+              <div class="card-footer">
+                <a href="#" class="card-clic"></a>
+                  <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+                    <a class="cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                      </svg>
+                    </a>        
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-sm-12 col-12 col-md-4 ">
+              <a href="#" class="card-clic"></a>
+                <div class="card border-secondary mb-4 card-index">
+                 <div id="cats">     
+                 <a href="http://localhost:3000/cats/7"><%= image_tag "cat7.jpg", width: 480, height: 300 %>class="card-clic"></a>
+                  </div>
+                  <div class="card-header p-0">
+                    <img crop="fill" class="card-img-top" src="https://fyooyzbm.filerobot.com/v7/test/Chaton-roux.jpg?vh=3cda58&ci_seal=529aa1f053&w=480&h=382&gravity=auto&func=crop" width="400" height="400">
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">Henry</h4>
+                    <p class="card-text">Race</p>
+                    <p class="card-text">13.99 €</p>
+                  </div>
+              </a>
+              <div class="card-footer">
+                <a href="#" class="card-clic"></a>
+                <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+                  <a class="cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                    </svg>
+                  </a>         
+              </div>
+          </div>
+        </div>
+
+
+
+      <div class="col-sm-12 col-12 col-md-4 ">
+        <a href="#" class="card-clic"></a>
+        <div class="card border-secondary mb-4 card-index">
+         <div>
+         <a href="http://localhost:3000/cats/8"><%= image_tag "cat8.jpg", width: 480, height: 300 %>class="card-clic"></a>
+         </div>  
+          <div class="card-header p-0">
+              <img crop="fill" class="card-img-top" src="https://www.eleveurs-online.com/data/race/155.660.jpg" width="400" height="400">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Nami</h4>
+              <p class="card-text">Siamois</p>
+              <p class="card-text">19.99 €</p>
+            </div>
+          </a>
+          <div class="card-footer">
+            <a href="#" class="card-clic"></a>
+            <a class="btn btn-outline-dark mx-1 my-1" href="#">Voir plus</a>
+            <a class="cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" float-right mt-3 mr-2>
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg>
+            </a>          
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+    </div>
+  
+</main>
+
+    <script>
+
+                    const menuHamburger = document.querySelector(".menu-hamburger")
+
+                    const navLinks = document.querySelector(".nav-links")
+
+                    menuHamburger.addEventListener('click',()=>{
+
+                    navLinks.classList.toggle('mobile-menu')
+
+                    })
+
+</script>
+
+  
+
+</body>
+
+<!--------------------------------------------- Footer --------------------------------------------------------->
+  <footer class="text-center text-lg-start bg-white text-muted">
+         <hr>
+          <section class="">
+            <div class="container text-center text-md-start mt-5">
+              <!-- Grid row -->
+              <div class="row lg-12">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  <!-- Content -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-gem me-3 text-secondary"></i>E-kittens
+                  </h6>
+                  
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    user
+                  </h6>
+                  <p>
+                    <a href="#!" class="text-reset">mon compte</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">Mon panier</a>
+                  </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    team
+                  </h6>
+                  <p>
+                    <a href="#!" class="text-reset">sarah</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">jonathan</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">kevin</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">jerry</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">mamoun</a>
+                  </p>
+                  <p>
+                    <a href="#!" class="text-reset">matthieu</a>
+                  </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                  <p><i class="fas fa-home me-3 text-secondary"></i> FRANCE</p>
+                  <p>
+                    <i class="fas fa-envelope me-3 text-secondary"></i>
+                    info@example.com
+                  </p>
+                  <p><i class="fas fa-phone me-3 text-secondary"></i>+01.02.03.04.05</p>
+                <!-- Grid column -->
+              </div>
+              <!-- Grid row -->
+            </div>
+          </section>
+        </div>
+          <!-- Section: Links  -->
+        
+          <!-- Copyright -->
+          <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+            retrouvez notre repo github:
+            <a class="text-reset fw-bold" href="https://github.com/JonathanSchafeitel/e-kittens">e-kittens</a>
+          </div>
+          
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+
+
+</html>
+
+ 
